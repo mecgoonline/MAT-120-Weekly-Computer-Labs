@@ -1,0 +1,38 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 1: Sampling Application
+
+R is a free software environment for statistical computing and graphics: https://www.r-project.org/  R is the fastest-growing programming language in the past few years.  It is convenient to run R under RStudio, which is also free: https://rstudio.com/products/rstudio/  You can set up a free RStudio Cloud 
+account at https://rstudio.cloud/
+
+After installing R, let us understand the nature of random numbers and their application.  Random numbers are not arbitrary numbers; they follow certain properties.  Instead of using a table, we use R to generate 7 random numbers using the following command.
+
+```{r}
+runif(7)
+```
+
+While the textbook was not explicit about it, there are many different types of random numbers.  The above command is used to generate random numbers uniformly distributed on the interval from 0 to 1.  To be more specific, let's generate 10,000 random numbers and observe the pattern of the histogram (which will be discussed in the book soon).
+
+```{r}
+hist(runif(10000))
+```
+
+We can use the properties to obtain a simple random sample, but standard statistical software contains a routine to simplify the process.  Below shows how to create a vector
+of ID numbers from 00 to 30 (which we call x), and then to random pick 3 numbers from the 31 numbers.
+
+```{r}
+x <- 0:30
+sample(x, 3)
+```
+
+Note that your output will be different from the above, otherwise it will not be random!  
+
+## Follow Up
+
+Read and try examples in F. Wang, *Learning R Through Textbook Examples*, 
+Chapter 1.  
+
+&copy; 2022 Frank Wang 

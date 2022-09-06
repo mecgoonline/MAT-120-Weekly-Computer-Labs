@@ -1,0 +1,78 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 6: Discrete Probability and Binomial Distribution
+
+## Example 1
+
+On page 249 of the OpenStax textbook, a hospital researcher find number of 
+times x the average post-op patient will ring the nurse during a 12-hour 
+shift.  The data are the following.
+
+```{r}
+x <- c(0, 1, 2, 3, 4, 5)
+p <- c(4/50, 8/50, 16/50, 14/50, 6/50, 2/50)
+```
+
+The expected value is calculated by multiply each value of the random
+variable by its probability, and then adding the products.  
+
+```{r}
+mu <- sum(x*p)
+mu
+```
+
+The variance and standard deviation are defined as follows.
+$$
+\sigma^{2} = \sum (x-\mu)^{2} \cdot P(x), \quad
+\sigma = \sqrt{\sigma^{2}}
+$$
+Below we implement the formula.
+
+```{r}
+v <- sum((x-mu)^2*p)
+sqrt(v)
+```
+
+We conclude that the mean is 2.32, and the standard deviation is 1.22.
+
+## Example 2
+
+Consider the example on page 256 of the OpenStax textbook, 41% of adult
+workers have a high school diploma but do not pursue any further education.
+If 20 adult workers are randomly selected, what is the probability
+that at most 12 of them have a high school diploma but do not pursue 
+further education?
+
+We can use the dbinom function for this problem.  The probabilities for
+exactly 11 and 12 are the following.  
+
+```{r}
+dbinom(11, 20, 0.41)
+dbinom(12, 20, 0.41)
+```
+
+We can use the colon operator to create a sequence from 0 to 12, and 
+use sum to add the probabilities together.
+
+```{r}
+dbinom(0:12, 20, 0.41)
+sum(dbinom(0:12, 20, 0.41))
+```
+
+The graph of the binomial probability distribution function is the following.
+
+```{r}
+plot(0:20, dbinom(0:20, 20, 0.41), type = "h")
+```
+
+## Follow Up
+
+Try the exercise on page 258 of the OpenStax textbook: 60% of American
+adults prefer saving over spending.  Out of a random sample of 50,
+what is the probability that at most 20 adults prefer saving?  
+
+&copy; 2022 Frank Wang 
+

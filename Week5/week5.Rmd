@@ -1,0 +1,54 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 5: Probability Topics
+
+## Example 1
+
+Researchers interviewed people who could remember their dreams and recall 
+which side they slept on.
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Nightmares.csv"),
+                skip = 1)
+head(dat)
+```
+
+We can organize the data into a two-way table.
+
+```{r}
+table(dat)
+```
+
+
+## Example 2
+
+We can arrange the counts of how many pet-owning OkCupid participants
+have dogs, cats, or both.  
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/OKCupid_CatsDogs.csv"),
+                skip = 1)
+head(dat)
+```
+
+To make a two-way table of pets and gender, we do the following.
+
+```{r}
+table(dat$CatsDogsBoth, dat$Gender)
+```
+
+## Follow Up
+
+The Titanic data set is below.
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Titanic.csv"))
+names(dat)
+```
+
+Construct a two-way table of class and "survived."  Hint: See Wang page 7.
+
+&copy; 2022 Frank Wang 

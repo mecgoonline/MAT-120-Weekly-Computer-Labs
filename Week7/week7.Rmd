@@ -1,0 +1,70 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 7: Normal Distribution
+
+## Example 1
+
+To display the probability density function of the standard normal distribution,
+we do the following 
+
+```{r}
+plot(dnorm, xlim = c(-4, 4))
+```
+
+To find the area under the curve to the left of a given z, we use the pnorm
+function.  For example, the area to the left of z=1.80 is shown below.
+
+```{r}
+pnorm(1.80)
+```
+
+On the other hand, to find what z-score cuts off certain percentage,
+we use the qnorm function.  For example, the z-score that cuts off
+the bottom 90% is shown below.
+
+```{r}
+qnorm(0.9)
+```
+
+## Example 2
+
+On page 388 of the OpenStax textbook, the life of CD players is normally 
+distributed with a mean of 4.1 years and a standard deviation of 1.3 years.  Find the probability that a CD player will break down in less than 3 years.
+
+We first find the z-score:
+$$
+z=\frac{3-4.1}{1.3}=-0.85
+$$
+We use the pnorm function to find the probability.
+
+```{r}
+pnorm(-0.85)
+```
+
+We conclude that the probability is 0.198.
+
+Practice 59 on the same page asks the 70th percentile of the distribution
+for the time a CD player last.  We do so we first find the z-score that
+cuts off the bottom 70% in a standard normal distribution.
+
+```{r}
+qnorm(0.70)
+```
+
+From the z-score, we can find the time by solving the following equation.
+$$
+0.52 = \frac{x-4.1}{1.3}, \quad x = 4.1 + 0.52 \times 1.3 = 4.8.
+$$
+
+## Follow Up
+
+On page 394 of the OpenStax textbook, it is stated that Facebook found that
+28 percent of its users check their profiles before getting out of bed
+in the morning.  Suppose this percentage follows a normal distribution 
+with a standard deviation of five percent.  (a) Find the probability
+that the percent is at least 30.  (b) Find the 95th percentile.  
+
+&copy; 2022 Frank Wang 

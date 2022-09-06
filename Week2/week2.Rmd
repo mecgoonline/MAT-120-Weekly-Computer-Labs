@@ -1,0 +1,62 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 2: Organizing Data
+
+## Example 1
+
+Professor Nick Horton's website contains a data set of student survey 
+result.  We use the function read.csv to open the file remotely.  The
+head function shows the first part of the dataframe, and names returns 
+the variable names
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Student_survey.csv"))
+head(dat)
+names(dat)
+```
+
+We use the table function to construct the frequency distribution of the
+response to the question "Do you believe in God?" in the example below, and
+the barplot function to build a bar chart.  
+
+```{r}
+tb1 <- table(dat$Do.you.believe.in.God)
+tb1
+barplot(tb1)
+```
+
+A relative frequency table displays percentages or proportions rather than
+the counts in each category.  
+
+```{r}
+n <- sum(tb1)
+n
+tb2 <- tb1/n
+tb2
+barplot(tb2)
+```
+
+## Example 2
+
+We analyze students' self rating of their political inclination below.
+
+```{r}
+tb3 <- table(dat$Politics.3Cat)
+tb3
+barplot(tb3)
+
+tb4 <- tb3/n
+tb4
+barplot(tb4)
+```
+
+## Follow Up
+
+Use the method demonstrated above to analyze the question on "How would
+you describe your diet?"  The variable name is "Diet".  
+
+&copy; 2022 Frank Wang 
+

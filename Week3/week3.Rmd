@@ -1,0 +1,98 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Week 3: Summary Statistics
+
+## Example 1
+
+On page 100 of the OpenStax textbook, a data set shows the heights in inches 
+for a class of 40 students.  To enter the data manually, we use the function
+c to create a vector.  Below we use the variable name bh for the heights
+of boys, and gh for girls.  
+
+```{r}
+bh <- c(66, 66, 67, 67, 68, 68, 68, 68, 68, 69, 69, 69, 70, 71, 72, 72, 72, 73, 73, 74)
+gh <- c(61, 61, 62, 62, 63, 63, 63, 65, 65, 65, 66, 66, 66, 67, 68, 68, 68, 69, 69, 69)
+```
+
+We use the fivenum function to find the five number summary.
+
+```{r}
+fivenum(bh)
+fivenum(gh)
+```
+
+To produce a boxplot, we do the following.
+
+```{r}
+boxplot(bh)
+boxplot(gh)
+```
+
+Boxplots are useful for making a comparision.  We plot both girls' and boys' 
+heights side by side.
+
+```{r}
+boxplot(bh, gh, names = c("boys", "girls"))
+```
+
+We can change the orientation with the option shown below.
+
+```{r}
+boxplot(bh, gh, names = c("boys", "girls"), horizontal = TRUE)
+```
+
+The sample mean and sample standard deviation can be evaluated using the
+mean and sd functions.  
+
+```{r}
+mean(bh)
+sd(bh)
+mean(gh)
+sd(gh)
+```
+
+## Example 2
+
+A study of men's health measured 14 body characteristics of 250 men.  We 
+import the data from Professor Nick Horton's website.
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Bodyfat.csv"))
+head(dat)
+```
+
+We use the following method to product a histogram showing the neck sizes of
+the 250 men.
+
+```{r}
+hist(dat$Neck)
+```
+
+The five number summary and box plot for the neck sizes are obtained below.
+
+```{r}
+fivenum(dat$Neck)
+boxplot(dat$Neck, horizontal = TRUE)
+```
+
+For the wrist circumference, see below.
+
+```{r}
+hist(dat$Wrist)
+fivenum(dat$Wrist)
+boxplot(dat$Wrist, horizontal = TRUE)
+```
+
+## Follow Up
+
+Consider the bicep circumferences in the data set Bodyfat.
+
+1. Construct a histogram.
+2. Find the five number summary.
+3. Construct a box plot.
+4. Find the sample mean and standard deviation.  
+
+&copy; 2022 Frank Wang 

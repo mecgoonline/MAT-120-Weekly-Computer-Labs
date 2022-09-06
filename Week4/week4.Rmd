@@ -1,0 +1,79 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Week 4: Linear Correlation and Regression
+
+## Example 1
+
+A study of men's health measured 14 body characteristics of 250 men.  We 
+import the data from Professor Nick Horton's website.
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Bodyfat.csv"))
+head(dat)
+```
+
+To make a scatter plot of body fat percentage and waist size, we can
+do either of the following.
+
+```{r}
+plot(dat$Waist, dat$Pct.BF)
+plot(dat$Pct.BF ~ dat$Waist)
+```
+
+To find the least squares line, we use the lm function.
+
+```{r}
+fit <- lm(dat$Pct.BF ~ dat$Waist)
+summary(fit)
+```
+
+From the R output we read the equation
+$$
+\hat{y} = 1.70 x - 42.73
+$$
+where $x$ is the waist size and $R^{2}$ value 0.6785.  We add the least 
+squares line to the scatter plot.
+
+```{r}
+plot(dat$Pct.BF ~ dat$Waist)
+abline(fit)
+```
+
+## Example 2
+
+A survey was conducted in the United States and 10 countries of Western
+Europe to determine the percentage of teenagers who had used marijuana
+and other drugs.  The results are below.  
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Drug_abuse.csv"))
+dat
+```
+
+We create a scatter plot, and find the least square line.
+
+```{r}
+plot(dat$Other.Drugs.... ~ dat$Marijuana....)
+fit <- lm(dat$Other.Drugs.... ~ dat$Marijuana....)
+summary(fit)
+abline(fit)
+
+```
+
+## Follow up
+
+How are fat and protein related on the entire Burger King's menu?  We 
+import the data set as shown below.
+
+```{r}
+dat <- read.csv(url("https://nhorton.people.amherst.edu/is5/data/Burger_King_items.csv"))
+names(dat)
+```
+
+Use the methods demonstrated above to make a scatter plot and find the least
+squares line.  Hint: See Wang page 45.  
+
+&copy; 2022 Frank Wang 
