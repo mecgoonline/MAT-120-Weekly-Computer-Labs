@@ -1,0 +1,78 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+## Titanic Example
+
+This is an example about the passengers and crew aboard the *Titanic* in the book by De Veaux *et al.*  The following lines are to import data from the file `Titanic.csv`.
+We can open the data file saved in a remote location; in this case Professor Nicholas Horton's website at https://nhorton.people.amherst.edu/is5/data.  
+
+```{r}
+dat <- read.csv(url(
+  "https://nhorton.people.amherst.edu/is5/data/Titanic.csv"))
+```
+
+We use `head` and `tail` to examine the beginning and the end of the data frame.
+
+```{r}
+head(dat)
+tail(dat)
+```
+
+To create a one-way table of class: 
+
+```{r}
+table(dat$Class)
+```
+
+For a two-way table of class and "survived",
+```{r}
+table(dat$Survived, dat$Class)
+```
+
+We assign the two-way table to `tbl`:
+
+```{r}
+tbl <- table(dat$Survive, dat$Class)
+```
+
+To calculate % of overall total, % of row, and % of column, we do the following.
+
+```{r}
+prop.table(tbl)
+prop.table(tbl, 1)
+prop.table(tbl, 2)
+```
+
+We can use the above two-way table to create a side-by-side bar chart.  
+
+```{r}
+barplot(prop.table(tbl, 2), beside = TRUE, 
+        legend = rownames(tbl))
+```
+
+Comparing relative frequency bar chart and pie chart:
+
+```{r}
+par(mfrow = c(1, 2))
+barplot(table(dat$Class)/length(dat$Class), las = 2)
+pie(table(dat$Class))
+par(mfrow = c(1, 1))
+```
+
+For stacked bar chart:
+
+```{r}
+tbl2 <- table(dat$Class, dat$Survived)
+barplot(tbl2, col = c("orange", "blue", "red", "green"))
+legend("topleft", legend = rownames(tbl2), title = "Class", 
+       fill = c("orange", "blue", "red", "green"))
+```
+
+We display ages of those aboard Titanit using a histogram.
+
+```{r}
+hist(dat$Age)
+```
+

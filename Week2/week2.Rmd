@@ -1,11 +1,35 @@
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 # Week 2: Organizing Data
 
 ## Example 1
+
+The software R comes with some built-in data sets.  Below is one of them,
+related to the 50 states.
+
+```{r}
+data("state")
+state.name
+state.region
+```
+
+To create a frequency distribution, we use the table function.
+
+```{r}
+table(state.region)
+```
+
+We create a bar chart to visualize it.
+
+```{r}
+barplot(table(state.region))
+```
+
+
+## Example 2
 
 Professor Nick Horton's website contains a data set of student survey 
 result.  We use the function read.csv to open the file remotely.  The
@@ -39,7 +63,7 @@ tb2
 barplot(tb2)
 ```
 
-## Example 2
+## Example 2 (continued)
 
 We analyze students' self rating of their political inclination below.
 
