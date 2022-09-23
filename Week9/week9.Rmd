@@ -36,7 +36,7 @@ qt(0.05/2, 14)
 
 Note that qt give the area to the left of the t-score, but in many introductory
 statistics textbook $t_{\alpha/2}$ represents the cut on the right tail, 
-and in such case $t_{\alpha/2}=2.145$.  A better notation the the right cut
+and in such a case $t_{\alpha/2}=2.145$.  A better notation for the right cut
 is $t_{1-\alpha/2}$.
 
 ```{r}
