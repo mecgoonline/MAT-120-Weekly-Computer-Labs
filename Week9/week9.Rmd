@@ -1,7 +1,7 @@
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 # Week 9: Confidence Intervals
 
@@ -34,8 +34,15 @@ degrees of freedom is 14.
 qt(0.05/2, 14)
 ```
 
-Note that qt give the area to the left of the t-score, so $t_{\alpha/2}=2.145$
-in this case.
+Note that qt give the area to the left of the t-score, but in many introductory
+statistics textbook $t_{\alpha/2}$ represents the cut on the right tail, 
+and in such case $t_{\alpha/2}=2.145$.  A better notation the the right cut
+is $t_{1-\alpha/2}$.
+
+```{r}
+qt(1-0.05/2, 14)
+```
+
 
 The lower and upper bounds of the confidence interval are the following.
 
